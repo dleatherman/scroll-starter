@@ -87,9 +87,18 @@
     }
   });
 
-  $('#section-3').one('inview', function(event, isInView) {
+  $('#section-3').on('inview', function(event, isInView) {
     $(event.target).addClass('run-animation');
-
+    var buttonPress = anime({
+      autoplay: false,
+      targets: 'button',
+      translateX: function() { return anime.random(-50, 50) + 'vw'; },
+      scale: 0.5
+    });
+    $('#section-3 button').click(function(e) {
+      e.preventDefault();
+      buttonPress.play();
+    });
   });
 
   $('#section-4').one('inview', function(event, isInView) {
