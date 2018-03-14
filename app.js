@@ -89,26 +89,32 @@
 
   $('#section-3').on('inview', function(event, isInView) {
     $(event.target).addClass('run-animation');
+
+    // This function runs every time the button is clicked
     var buttonPress = anime({
       autoplay: false,
-      targets: 'button',
-      translateX: function() { return anime.random(-50, 50) + 'vw'; },
-      scale: 0.5
+      backgroundColor: '#FF4477',
+      targets: '#section-3 button',
+      scale: 0.5,
+      loop: 1,
+      duration: 200,
+      easing: 'easeInOutQuad',
+      direction: 'alternate',
+      complete: function() {
+        buttonPress.reset();
+      }
     });
-    $('#section-3 button').click(function(e) {
-      e.preventDefault();
+    $('#section-3 button').click(function() {
       buttonPress.play();
     });
   });
 
   $('#section-4').one('inview', function(event, isInView) {
     $(event.target).addClass('run-animation');
-
   });
 
   $('#section-5').one('inview', function(event, isInView) {
     $(event.target).addClass('run-animation');
-
   });
 
 })(jQuery);
